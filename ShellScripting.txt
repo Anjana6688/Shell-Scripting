@@ -1,0 +1,101 @@
+##########################
+Day -14					  #
+Date: 31st July2026 -02nd august       #
+##########################
+
+git clone <repo url>
+git clone vs git pull
+clone first time downloading the code.
+pull--> just pull the latest chnages.
+
+Shell scipt always starts with shebang line.It is the interpret to check the syntax of the script and execute them
+Variables:
+==========
+Variable always hold some values.
+
+Why we use variable??
+DRY - Dont repeat yourself.
+so if you define the repetative define it in variable.
+Reusability
+Flexibilty -> prevents accidental edits
+Readability -> 
+Maintanance
+
+Syntax:
+=======
+VAR_NAME=value
+when we echo we can use along with $VAR_NAME it will diffrentate the normal and var text looks different.
+
+##########################
+Day -15				  #
+Date: 02nd august 26       #
+##########################
+
+refer a varaible:
+$VAR_NAME or ${VAR_NAME}
+
+Argument varaibles if you define an varibale inside the code PERSON1=$1
+PERSON2=$2
+PERSON3=$3
+then while running the code you can give the arguments while running shell script.
+sh variables.sh anjana sairam pranavi
+
+echo "please enter username:"
+read -s USER_NAME # here USER_NAME is variable -s helpful to hide data from screen
+read -sp "please Enter Your Password:" PASSWORD #READ -P WILL HELPFUL to REMOVE extra ECHO COMMAND IT WILL Directly prints
+
+Environment Variable:
+======================
+
+export COURSE="DevSecOps with AWS" -> ENV variables, this variable is valid until this process is alive, it is accessible to sub process also
+
+even if we logout of that session in server still we need the variables then we need to defined in
+~/.bashrc
+Define the export variable with value in this file
+and then source it using command source .bashrc
+
+script start time
+script end time
+executed in end time - start time seconds
+#If you take any variable to accept the command decalaration will be VAR_Name=$(command)
+$@ -->All variables passed to the script
+$* All variables passed to the script
+$0 --> the shell script itself places script name in $0
+
+DataTypes:
+==========
+In shellscript there are no explicit data types.the shell will automatically understood.
+for ex: 
+NUMBER1=200
+NUMBER2=300
+NUMBER3="anjana"
+SUM=$(($NUMBER1+$NUMBER2+$NUMBER3))
+echo "$SUM"
+and the result is 500 the shell automatically add the integers
+##########################
+Day -16				  #
+Date: 02nd august 26       #
+##########################
+
+Array:
+======
+
+#!/bin/bash
+
+    MY_ARRAY=("ANJANA" "Pranavi" "SAIRAM")
+
+    #To Prrint All elements: Use [*] or [@] as the index.
+
+    echo "Printing all family members ${MY_ARRAY[@]}" # Outputs: Printing all family members ANJANA Pranavi SAIRAM
+# want only one varibale
+
+echo "KID in our family:${MY_ARRAY[1]}" #output: KID in our family:Pranavi
+
+Conditions:
+=========
+
+Exit status
+=============
+$? -> previous command exit status
+0 -> SUCCESS
+1-127 -> FAILURE

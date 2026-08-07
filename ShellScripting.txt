@@ -98,4 +98,25 @@ Exit status
 =============
 $? -> previous command exit status
 0 -> SUCCESS
-1-127 -> FAILURE
+1-127 -> FAILURES
+if [ $USER_ID -ne 0 ]; then
+   echo "To run this script need to be a root user"
+   exit 1 #if we dont give exit code shell will continue for next step even if condition fails in shell exit 0 means sucess other than that failure
+ fi
+ 
+ if we don't give the exit code it will procedd further thats the disadvantage of shell script.
+exit 1 means failure always give other exit codes otherthan 0 then code will fail.
+
+Functions:
+========== 
+Instead of applying same line of code in multiple lines, we can use function for similar/repeated codes
+put inside the functions.
+
+1. call it
+2. provide inputs if required
+
+func_name(){
+
+}
+
+func_name

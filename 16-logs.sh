@@ -9,24 +9,24 @@ N="\e[0m"
 
 LOGFOLDER="/var/log/Install"
 SCRIPTNAME=$( echo $0| cut -d "." -f1 )
-LOGFILE="$LOGFOLDER/$ScRIPTNAME.log" # /var/log/Install/16-logs.log
+LOGFILE="$LOGFOLDER/$SCRIPTNAME.log" # /var/log/Install/16-logs.log
 
 mkdir -p $LOGFOLDER
-echo "Script started executed at: $(date)" | tee -a $LOG_FILE
+echo "Script started executed at: $(date)" | tee -a $LOGFILE
 
 
 
 if [ $USERID -ne 0 ]; then
-    echo "ERROR:: Please run this script with root privelege" | tee -a $LOG_FILE
+    echo "ERROR:: Please run this script with root privelege" | tee -a $LOGFILE
     exit 1 # failure is other than 0
 fi
 
 VALIDATE(){ # functions receive inputs through args just like shell script args
     if [ $1 -ne 0 ]; then
-        echo -e "Installing $2 ... $R FAILURE $N"  | tee -a $LOG_FILE
+        echo -e "Installing $2 ... $R FAILURE $N"  | tee -a $LOGFILE
         exit 1
     else
-        echo -e "Installing $2 ... $G SUCCESS $N" | tee -a $LOG_FILE
+        echo -e "Installing $2 ... $G SUCCESS $N" | tee -a $LOGFILE
     fi
 }
 

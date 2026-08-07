@@ -8,7 +8,7 @@ Y="\e[33m"
 N="\e[0m"
 
 LOGFOLDER="/var/log/Install"
-SCRIPTNAME= $(echo $0| cut -d "." -f1)
+SCRIPTNAME= $( echo $0| cut -d "." -f1 )
 LOGFILE="$LOGFOLDER/$ScRIPTNAME.log" # /var/log/Install/16-logs.log
 
 mkdir -p $LOGFOLDER

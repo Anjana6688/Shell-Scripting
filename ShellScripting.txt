@@ -120,3 +120,80 @@ func_name(){
 }
 
 func_name
+while calling you can give the arguments to the functions.
+
+# Functions
+VALIDATE(){
+if [ $1 -ne 0 ]; then
+    echo "ERROR:: Installing $2 is failure"
+    exit 1
+else
+    echo "Installing $2 is SUCCESS"
+fi
+}
+dnf install mysql -y
+VALIDATE $? mysql
+#$? will store it in the $1 and mysql will store it in the $2
+
+Colours:
+========
+
+RED='\e[0;31m'
+GREEN='\e[0;32m'
+YELLOW='\e[0;33m'
+NC='\e[0m' # No Color
+
+echo -e "$GREEN This is a success message $NC"
+we need to give -e when echo the colour to consider the slash '\e[0;31m' and exucte it not print it.
+
+Redirections:
+============
+
+1 -> success
+2 -> failure
+& -> success/failure
+for ex: ls -l $> output.log it will store both.
+$ jsajksadkj 2>output.log
+$ cat output.log
+bash: jsajksadkj: command not found
+
+mkdir -p this p will do if directory is not there it will create other it will be silent won;t through any errors.
+Logs:
+====
+if [ $USERID -ne 0 ]; then
+    echo "ERROR:: Please run this script with root privelege"
+    exit 1 # failure is other than 0
+fi
+
+If you want to print the output in console as well as log use tee command.
+i.e, echo "ERROR:: Please run this script with root privelege" | tee -a $LOG_FILE
+
+Script name always stores in $0.
+##########################
+Day -17			  #
+Date: 08th august 26       #
+##########################
+
+Loops:
+=====
+# for i in {1..10}; do
+#     echo " $i"
+# done
+
+loops/iteration
+
+1. Loops will not improve perfomance but it will reduce the efforts.
+3. less code duplication
+4. easy to maintain
+5. dynamic workloads
+
+IAM Creation:
+
+Interview questions:
+====================
+
+We have created log file and while script run the logs files generated and if we need fresh logs from
+zero bites what we will do?
+
+
+

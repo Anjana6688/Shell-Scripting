@@ -188,6 +188,113 @@ loops/iteration
 5. dynamic workloads
 
 IAM Creation:
+AWS COMMAND Line:
+Automations:
+============
+1. create ec2 instance
+2. update private ip in r53 record
+3. if frontend update public ip in frontend.daws86s.fun
+
+Using aws cli we will create instance using shell script.
+search tearms: aws cli to create an instance 
+To create the instance use this below command:
+aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type t3.micro --security-group-ids sg-07c8acf3fa6b923fa --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Test}]'
+
+2. To create route53 we need private/public ip.
+public ip takes some item after ec2 created.
+to get the puclic ip we need EC2 instance id
+for that use below command and search term. aws clito get the instance id.
+aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type t3.micro --security-group-ids sg-07c8acf3fa6b923fa --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Test}]' --query 'Instances[0].InstanceId' --output text
+
+How to create an repository if you already created a folder.
+1.git init
+2.git branch -M main
+git remote add origin https://github.com/Anjana6688/Shell-APP.git
+git push -u origin main
+
+Now creating mongodb using automation:
+====================================
+use robhoshop document. https://github.com/daws-86s/roboshop-documentation
+##########################
+Day -18		  #
+Date: 09th august 26       #
+##########################
+
+SED editor
+===========
+strealine editor, it is a non-interactive editor(no need to open or any human interaction not required)
+it used for create the line
+update the line
+delete the line
+
+
+sed '1i Hello SED' <file-name> -> insert before first line but its temporrary only shown on the screen doesn't impact the actual file.
+sed -i '1i Hello SED' <file-name> --> -i means actual insertion it will add hello sed inside the file.
+sed '1a Hello' -> insert after first line
+sed '2d' -> delete 2nd line
+sed '/Hello/d' -> delete lines where there is Hello
+sed 's/root/ROOT/' -> substitute the first occurence in every line
+sed 's/root/ROOT/g' -> substitute all occurences in every line
+sed '3c Hello change' -> replace 3rd line
+sed '/error/ c NO-ERROR' -> change the line based on pattern
+
+1. Intially we will create mongodb instance;
+[ ec2-user@ip-172-31-30-190 ~/Shell-APP ]$ sh roboshop.sh mongodb
+mongodb: 172.31.24.243
+{
+    "ChangeInfo": {
+        "Id": "/change/C0182343189WPKW7UBDDN",
+        "Status": "PENDING",
+        "SubmittedAt": "2026-08-09T12:34:47.058000+00:00",
+        "Comment": "Updating record set"
+    }
+}
+ 2. creating mongodb --> sudo sh mongodb.sh
+
+Creating catlouge:
+==================
+ refer catlouge.md file.
+ 
+ After installing to check the health curl http:/localhost:8080/health
+ to verify instead load duplicate DB better verify before for that
+ Shell script to check mongodb Db collections exist or not.
+ # Run MongoDB command to list collections and check
+    local result=$($MONGO_SHELL --quiet --host "$MONGO_HOST" --port "$MONGO_PORT" $auth_args "$db" \
+        --eval "db.getCollectionNames().indexOf('$collection') >= 0" 2>/dev/null)
+		
+		# Run MongoDB command to list collections and check
+    local result=$($MONGO_SHELL --quiet --host "mongodb.anjana.fun" --port "$MONGO_PORT" $auth_args "$db" \
+        --eval "db.getCollectionNames().indexOf('$collection') >= 0" 2>/dev/null)
+		if it returns 1 then its present.
+		-1 not present
+
+set:
+====
+set -e --> If we give this when error came it will exit will not proceed further.
+set -o --> pipefail --> dont mask the lines 
+set -euo pipefail
+
+whoever dislike to much lines of code they will use set command instead of VLAIDATE.
+we can use echo to print the necessary.
+ 
+ trap:
+ -----
+ it will give you the exact line number.
+ trap 'echo "There is an error in $LINENO, Command is: $BASH_COMMAND"' ERR
+
+ 
+ 
+ Idempotent:
+ ==========
+ Scripts should give same results even you run them infinte times -> this is called idempotency
+ 
+ Suppose we consider methods:
+ GET Method -->All give same reults anytime you read.
+ POST --> If we push existing data then it will create duplicates/error. Here we need to work on idempotency.
+ PUT/UPDATE:If we same number and emaiid updated same as previous /already existed then it will be an issue.It need idempotency.
+ DELETE: If we del same item again and again it will be an issue instead check its deleted already or not.
+ 
+
 
 Interview questions:
 ====================

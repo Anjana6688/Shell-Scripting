@@ -238,7 +238,7 @@ sed 's/root/ROOT/g' -> substitute all occurences in every line
 sed '3c Hello change' -> replace 3rd line
 sed '/error/ c NO-ERROR' -> change the line based on pattern
 
-1. Intially we will create mongodb instance;
+1. Intially we will create mongodb instance;We can use same script to create multiple instance at once.
 [ ec2-user@ip-172-31-30-190 ~/Shell-APP ]$ sh roboshop.sh mongodb
 mongodb: 172.31.24.243
 {
@@ -293,7 +293,45 @@ we can use echo to print the necessary.
  POST --> If we push existing data then it will create duplicates/error. Here we need to work on idempotency.
  PUT/UPDATE:If we same number and emaiid updated same as previous /already existed then it will be an issue.It need idempotency.
  DELETE: If we del same item again and again it will be an issue instead check its deleted already or not.
- 
+ ##########################
+Day -19	                   #
+Date: 12th august 26       #
+##########################
+
+Port:
+netstat -lntp
+27017   -mongodb
+curl http://localhost:8080/health
+catlouge and all db
+shipping -- java
+Payment is in Phython
+
+Steps:
+First clone the repo and then make sure all the service files are installed.
+and run the scripts after frontend completed then check with anjana.fun
+
+There are so many repetatitive line of codes.
+So DRY --> Don't repeat yourself
+calling script 1 to another script we will do sourcing
+How can you call one script from another script?
+1. call by sh <script-name> runs in different process, can't access script-1 environment. script-1 is not effected by script-2 failure
+2. source <script-name> runs in the same proces sof script-1 can access script-1 environment. script-1 is effected by script-2 failure
+
+To Avoid Dry We will create all common 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Interview questions:
@@ -301,6 +339,24 @@ Interview questions:
 
 We have created log file and while script run the logs files generated and if we need fresh logs from
 zero bites what we will do?
-
-
-
+How can you call one script from another script.
+ANS: There are two ways
+1.For independent scripts we can choose,call by sh <script-name> runs in different process, can't access script-1 environment. script-1 is not effected by script-2 failure
+2. source <script-name> runs in the same proces sof script-1 can access script-1 environment. script-1 is effected by script-2 failure
+3.show top five CPU processes.
+4.Find files modified in last N days
+file:///D:/DevOps_Interview_Preparation_Series_Day_3_ShellScript.pdf
+7. Disk usage alert script (*****IMP)
+8.Special Variables in Shell Scripting
+ $0: Script name
+ $1, $2&: Positional arguments
+ $@: All arguments individually
+ $*: All arguments as one string
+ $#: Number of arguments passed to the script
+ $PWD: Current working directory
+ $HOME: Home directory of the current user
+ $USER: User running the script
+ $$: Process ID of the current script
+ $!: PID of the last background command
+ $?: Exit status of the last executed comand
+ $-: Current shell flags/opti
